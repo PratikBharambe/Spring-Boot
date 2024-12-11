@@ -1,12 +1,12 @@
 package com.demo.SpringBootProductCRUDMVC.controller;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +21,8 @@ import com.demo.SpringBootProductCRUDMVC.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
+
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
 	@Autowired
@@ -32,7 +34,7 @@ public class ProductController {
 		if(plist != null)
 			return ResponseEntity.ok(plist);
 		else
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	@GetMapping("/products/{id}")
@@ -41,7 +43,7 @@ public class ProductController {
 		if(p != null)
 			return ResponseEntity.ok(p.get());
 		else
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	@PostMapping("/products/{id}")
