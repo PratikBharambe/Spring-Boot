@@ -1,0 +1,5 @@
+spring.application.name=EurekaServer
+
+#telling the server not to register himself in the service registry
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
